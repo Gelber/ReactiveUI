@@ -1,23 +1,21 @@
-// Licensed to the .NET Foundation under one or more agreements.
+﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MS-PL license.
 // See the LICENSE file in the project root for more information.
 
+using Splat;
 using System;
 using System.ComponentModel;
-using Splat;
 
 namespace ReactiveUI
 {
 
     /// <summary>
     /// This binding type converter uses the built-in WPF component model 
-    /// conversions to get a whole bunch of conversions for free. Unfortunately,
-    /// these are pretty gutted on some other platforms like Silverlight.
+    /// conversions to get a whole bunch of conversions for free.
     /// </summary>
     public class ComponentModelTypeConverter : IBindingTypeConverter
     {
-        readonly MemoizingMRUCache<Tuple<Type, Type>, TypeConverter> typeConverterCache = new MemoizingMRUCache<Tuple<Type, Type>, TypeConverter>((types, _) =>
-        {
+        readonly MemoizingMRUCache<Tuple<Type, Type>, TypeConverter> typeConverterCache = new MemoizingMRUCache<Tuple<Type, Type>, TypeConverter>((types, _) => {
             // NB: String is a Magical Type(tm) to TypeConverters. If we are
             // converting from string => int, we need the Int converter, not
             // the string converter :-/

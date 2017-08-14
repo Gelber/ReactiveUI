@@ -1,4 +1,4 @@
-// Licensed to the .NET Foundation under one or more agreements.
+﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MS-PL license.
 // See the LICENSE file in the project root for more information.
 
@@ -8,12 +8,6 @@ using Splat;
 
 namespace ReactiveUI
 {
-
-    /// <summary>
-    /// This binding type converter uses the built-in WPF component model 
-    /// conversions to get a whole bunch of conversions for free. Unfortunately,
-    /// these are pretty gutted on some other platforms like Silverlight.
-    /// </summary>
     public class ComponentModelTypeConverter : IBindingTypeConverter
     {
         readonly MemoizingMRUCache<Tuple<Type, Type>, TypeConverter> typeConverterCache = new MemoizingMRUCache<Tuple<Type, Type>, TypeConverter>((types, _) =>
